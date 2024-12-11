@@ -29,6 +29,7 @@ export const createBittree = async (e) => {
 
 // fetch bittrees according to username
 export const fetchBittrees = async (username) => {
+    connectDb()
     const userLinks = await Bittree.find({username: username})
     const plainLinks = userLinks.map((link)=>{
         const plainLink = {
@@ -46,6 +47,7 @@ export const fetchBittrees = async (username) => {
 // delete user credentials from the database, if user clicks on logout button
 export const logoutUser = async (email)=>{
     try {
+        connectDb()
         await User.findOneAndDelete(email)
         return {
             data: "User has been logged out!",
