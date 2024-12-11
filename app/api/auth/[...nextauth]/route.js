@@ -37,7 +37,8 @@ const authOptions = NextAuth({
                 return false
             }
         }
-    }
+    },
+    secret: process.env.NEXTAUTH_SECRET
 })
 
 export { authOptions as GET, authOptions as POST }
