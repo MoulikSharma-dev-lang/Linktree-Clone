@@ -18,7 +18,7 @@ const authOptions = NextAuth({
     callbacks: {
         signIn: async ({ user, account, profile }) => {
             try {
-                connectDb()
+                await connectDb()
                 const { name, email, image } = user
                 const foundUser = await User.findOne({ email: email })
                 if (!foundUser) {
